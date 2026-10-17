@@ -1,0 +1,55 @@
+# Environments & Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# Python bytecode & cache
+__pycache__/
+pycache/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Notebook checkpoints
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Root data directory and raw files (preserves src/data/)
+/data/
+*.xpt
+*.XPT
+
+# Large data files and tabular datasets
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.tar.gz
+*.zip
+*.7z
+*.csv
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

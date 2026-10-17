@@ -1,0 +1,167 @@
+{
+  "dataset_summary": {
+    "total_microdata_participants": 30000,
+    "macro_survey_cycles": 10,
+    "granular_panel_observations": 808,
+    "granular_cohorts_count": 101
+  },
+  "potential_outcomes_aipw": {
+    "n_observations": 30000,
+    "treatment": "high_sugar_treatment",
+    "outcome": "hba1c",
+    "naive_observational_difference": 0.6229,
+    "ate_doubly_robust": 0.4477,
+    "ate_standard_error": 0.0064,
+    "p_value": 0.0,
+    "ci_95_lower": 0.4351,
+    "ci_95_upper": 0.4603,
+    "ate_msm_iptw": 0.4473,
+    "confounding_bias_removed": 0.1752,
+    "e_value": 3.1,
+    "balance_df": [
+      {
+        "confounder": "age",
+        "smd_unweighted": 0.285,
+        "smd_weighted": 0.0012,
+        "balanced": true
+      },
+      {
+        "confounder": "gender",
+        "smd_unweighted": 0.2504,
+        "smd_weighted": 0.0037,
+        "balanced": true
+      },
+      {
+        "confounder": "poverty_income_ratio",
+        "smd_unweighted": 0.5852,
+        "smd_weighted": 0.0069,
+        "balanced": true
+      },
+      {
+        "confounder": "sedentary_minutes",
+        "smd_unweighted": 0.62,
+        "smd_weighted": 0.0075,
+        "balanced": true
+      },
+      {
+        "confounder": "bmi",
+        "smd_unweighted": 0.1538,
+        "smd_weighted": 0.0036,
+        "balanced": true
+      }
+    ],
+    "mean_propensity_treated": 0.461,
+    "mean_propensity_control": 0.305
+  },
+  "dynamic_panel_fixed_effects": {
+    "n_cohorts": 101,
+    "n_time_periods": 9,
+    "total_panel_observations": 707,
+    "exposure_lagged": "daily_sugar_g_lag1",
+    "outcome": "hba1c",
+    "causal_effect_beta": -0.0,
+    "cluster_robust_se": 0.0008,
+    "p_value": 0.9848,
+    "ci_95_lower": -0.0015,
+    "ci_95_upper": 0.0015,
+    "r_squared_within": 0.5319,
+    "significant": false,
+    "covariates_controlled": [
+      "bmi",
+      "sedentary_minutes",
+      "daily_calories"
+    ],
+    "unobserved_confounders_status": "Completely eliminated by within-cohort de-meaning (alpha_c)"
+  },
+  "convergent_cross_mapping": {
+    "causal_direction": "Bidirectional Dynamical Coupling: activity_counts <-> metabolic_rate_mets",
+    "library_sizes": [
+      24,
+      49,
+      83,
+      116,
+      157
+    ],
+    "rho_x_causes_y": [
+      0.9658,
+      0.9706,
+      0.9765,
+      0.9769,
+      0.9774
+    ],
+    "rho_y_causes_x": [
+      0.9811,
+      0.9798,
+      0.9809,
+      0.9823,
+      0.9832
+    ],
+    "convergence_demonstrated": true
+  },
+  "granger_causality": {
+    "var_a": "daily_sugar_g",
+    "var_b": "hba1c",
+    "causal_direction": "Bidirectional Feedback Loop (daily_sugar_g <-> hba1c)",
+    "a_to_b": {
+      "cause": "daily_sugar_g",
+      "effect": "hba1c",
+      "best_lag": 2,
+      "best_pvalue": 0.0115,
+      "is_causal": true,
+      "test_statistic": "ssr_ftest",
+      "lag_details": {
+        "1": {
+          "f_stat": 1.8456,
+          "p_value": 0.2232,
+          "significant": false
+        },
+        "2": {
+          "f_stat": 27.9217,
+          "p_value": 0.0115,
+          "significant": true
+        }
+      },
+      "interpretation": "'daily_sugar_g' Granger-causes 'hba1c' (p=0.0115 at lag 2)"
+    },
+    "b_to_a": {
+      "cause": "hba1c",
+      "effect": "daily_sugar_g",
+      "best_lag": 1,
+      "best_pvalue": 0.0477,
+      "is_causal": true,
+      "test_statistic": "ssr_ftest",
+      "lag_details": {
+        "1": {
+          "f_stat": 6.1553,
+          "p_value": 0.0477,
+          "significant": true
+        },
+        "2": {
+          "f_stat": 0.6674,
+          "p_value": 0.5757,
+          "significant": false
+        }
+      },
+      "interpretation": "'hba1c' Granger-causes 'daily_sugar_g' (p=0.0477 at lag 1)"
+    }
+  },
+  "interrupted_time_series": {
+    "baseline_intercept_b0": 107.2654,
+    "baseline_slope_b1": 3.7299,
+    "baseline_slope_pvalue": 0.0,
+    "immediate_level_change_b2": -8.2091,
+    "level_change_se": 0.3289,
+    "level_change_pvalue": 0.0,
+    "level_change_significant": true,
+    "slope_change_b3": -5.6176,
+    "slope_change_se": 0.1713,
+    "slope_change_pvalue": 0.0,
+    "slope_change_significant": true,
+    "r_squared": 0.9953,
+    "f_pvalue": 0.0,
+    "final_period_treatment_effect": -47.532,
+    "final_period_factual": 93.2354,
+    "final_period_counterfactual": 140.8348,
+    "final_period_relative_effect_pct": -33.75
+  }
+}
